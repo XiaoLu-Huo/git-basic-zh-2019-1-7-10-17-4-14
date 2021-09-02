@@ -23,11 +23,26 @@ public class PracticeCTest {
         //选出1集合中跟2对象中value属性中的元素相同的元素
         List<String> collection1 = Arrays.asList("a", "e", "h", "t", "f", "c", "g", "b", "d");
         List<String> list = Arrays.asList("a", "d", "e", "f");
-        Map<String,List<String>> collection2 = new HashMap<>();
-        collection2.put("value",list);
+        Map<String, List<String>> collection2 = new HashMap<>();
+        collection2.put("value", list);
 
         List<String> result = practiceC.collectSameElements(collection1, collection2);
         List<String> expectedResult = Arrays.asList("a", "e", "f", "d");
+        assertEquals(result, expectedResult);
+    }
+
+    @Test
+    public void collect_same_elements_should_return_an_array_with_same_elements_in_two_collections_when_secondCollection_has_two_children() throws Exception {
+        //选出1集合中跟2对象中value属性中的元素相同的元素
+        List<String> collection1 = Arrays.asList("a", "e", "h", "t", "f", "c", "g", "b", "d");
+        List<String> list = Arrays.asList("a", "d", "e", "f");
+        List<String> list2 = Arrays.asList("a", "d", "e", "b");
+        Map<String, List<String>> collection2 = new HashMap<>();
+        collection2.put("value", list);
+        collection2.put("value2", list2);
+
+        List<String> result = practiceC.collectSameElements(collection1, collection2);
+        List<String> expectedResult = Arrays.asList("a", "e", "f", "b", "d");
         assertEquals(result, expectedResult);
     }
 }
